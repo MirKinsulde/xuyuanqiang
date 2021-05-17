@@ -1,0 +1,4 @@
+.user{float: left;width: 90%;margin: 20px 20px 0;}
+.user p{float: left;width: 100%;margin: 0px 0  0px;line-height: 26px;}
+.user .hr{float: left;width: 100%;margin: 10px 0;height: 1px;border-bottom: 1px dotted #ddd;}
+.user .fahuo{float: left;width: 500px;margin: 10px 0  0px;line-height: 24px;padding: 15px;background: #f1f1f1;border: 1px dotted #ddd;}

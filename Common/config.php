@@ -8,7 +8,7 @@
 
 return array(
     'DB_HOST' => 'localhost',
-    'DB_NAME' => 'xuyuanka',
+    'DB_NAME' => 'xuyuanqiang',
     'DB_USER' => 'root',
-    'DB_PW' => '123456',
+    'DB_PW' => '',
 );

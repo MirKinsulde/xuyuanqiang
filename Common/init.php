@@ -7,4 +7,4 @@
  */
 session_start();
 header("Content-type:text/html;charset=utf8");
-require 'config.php';
+require 'dbTool.php';
