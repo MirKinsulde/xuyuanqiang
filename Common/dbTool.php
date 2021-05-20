@@ -41,7 +41,7 @@ function dbClose($link){
  */
 function selectWishes(){
     $link = dbConnect();
-    $sql = "select * from shangfox_wish";
+    $sql = "select * from shangfox_wish order by time desc";
     $result = mysqli_query($link, $sql);
     if ($result){
         $wishes = array();
@@ -52,8 +52,59 @@ function selectWishes(){
         return $wishes;
     }else{
         $error = mysqli_error($link);
-        dbClose($link);
-        die($error);
+        echo $error;
     }
 
+}
+
+/**
+ * 添加愿望
+ * @param $fromname
+ * @param $content
+ * @param $type
+ * @param $class
+ * @return bool
+ */
+function addWish($fromname, $content, $type, $class){
+    $link = dbConnect();
+    $date = time();
+    $sql = "insert into shangfox_wish (content, ding, cai, click, fromname, time, statu, type, keywords, class, uid) values ('$content', 0, 0, 0, '$fromname', $date, 1, '$type', '', $class, 0)";
+  
+    $result = mysqli_query($link, $sql);
+    
+    if ($result){
+        dbClose($link);
+        return true;
+    }else{
+        dbClose($link);
+        $error = mysqli_error($link);
+        echo $error;
+    }
+}
+
+/**
+ * 判断登录
+ * @param $username
+ * @param $password
+ * @return bool
+ */
+function canLogin($username, $password){
+    $link = dbConnect();
+    $password = md5($password);
+    $sql = "select * from shangfox_user where username = '$username' and password = '$password'";
+    
+    $result = mysqli_query($link, $sql);
+
+    if ($result){
+      $num = mysqli_num_rows($result);
+        if ($num > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        dbClose($link);
+        $error = mysqli_error($link);
+        echo $error;
+    }
 }

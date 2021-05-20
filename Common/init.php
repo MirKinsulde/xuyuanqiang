@@ -8,3 +8,4 @@
 session_start();
 header("Content-type:text/html;charset=utf8");
 require 'dbTool.php';
+require 'page.php';

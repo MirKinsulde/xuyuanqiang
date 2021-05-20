@@ -9,8 +9,8 @@
 require '../Common/init.php';
 
 //判断用户是否登陆过
-if (empty($_SESSION['userId'])){
-    require 'login.php';
+if (empty($_SESSION['username'])){
+    require './Login/login.php';
 }else{
-    require 'admin.php';
+    require './Main/admin.php';
 }
