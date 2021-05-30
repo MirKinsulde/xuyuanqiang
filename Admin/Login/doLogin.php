@@ -5,7 +5,6 @@
  * Date: 16/12/7
  * Time: 下午5:08
  */
-
 require_once __DIR__.'/../Common/VerifyLogin.php';
 if (isset($_POST['username'])){
     if (!empty($_POST['username']) && !empty($_POST['password'])){
@@ -19,6 +18,8 @@ if (isset($_POST['username'])){
         }
     }else{
         $error = "用户名或密码不能为空!";
+
+        
         require "login.php";
     }
 }else{
