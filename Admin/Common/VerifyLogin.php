@@ -10,7 +10,6 @@ require_once __DIR__.'/../../Common/init.php';
 function isNotLogin(){
     //判断用户是否还没登录
     if (empty($_SESSION['username'])){
-        $info = "您还没有登录,请先登录 ... ...";
         $path = "/Admin";
         $delay = 0;
         include __DIR__.'/../../Common/jump.php';
@@ -20,7 +19,6 @@ function isNotLogin(){
 function isLogin(){
     //判断用户是否已经登录了
     if (!empty($_SESSION['username'])){
-        $info = "您已经登录了 ... ...";
         $path = "/Admin";
         $delay = 0;
         include __DIR__.'/../../Common/jump.php';

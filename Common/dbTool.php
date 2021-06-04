@@ -37,11 +37,10 @@ function dbClose($link){
 
 /**
  * 查询愿望
- * @return array
  */
 function selectWishes(){
     $link = dbConnect();
-    $sql = "select * from shangfox_wish order by time desc";
+    $sql = "select * from shangfox_wish where delstatus = 0 order by time desc";
     $result = mysqli_query($link, $sql);
     if ($result){
         $wishes = array();
@@ -52,9 +51,54 @@ function selectWishes(){
         return $wishes;
     }else{
         $error = mysqli_error($link);
+        dbClose($link);
         echo $error;
+        return false;
     }
+}
 
+/**
+ * 查询未删除愿望
+ */
+function selectNoDelWishes(){
+    $link = dbConnect();
+    $sql = "select * from shangfox_wish where delstatus = 0 order by time desc";
+    $result = mysqli_query($link, $sql);
+    if ($result){
+        $wishes = array();
+        while ($row = mysqli_fetch_assoc($result)){
+            $wishes[] = $row;
+        }
+        dbClose($link);
+        return $wishes;
+    }else{
+        $error = mysqli_error($link);
+        dbClose($link);
+        echo $error;
+        return false;
+    }
+}
+
+/**
+ * 查询删除愿望
+ */
+function selectDelWishes(){
+    $link = dbConnect();
+    $sql = "select * from shangfox_wish where delstatus = 1 order by time desc";
+    $result = mysqli_query($link, $sql);
+    if ($result){
+        $wishes = array();
+        while ($row = mysqli_fetch_assoc($result)){
+            $wishes[] = $row;
+        }
+        dbClose($link);
+        return $wishes;
+    }else{
+        $error = mysqli_error($link);
+        dbClose($link);
+        echo $error;
+        return false;
+    }
 }
 
 /**
@@ -79,6 +123,7 @@ function addWish($fromname, $content, $type, $class){
         dbClose($link);
         $error = mysqli_error($link);
         echo $error;
+        return false;
     }
 }
 
@@ -97,6 +142,7 @@ function canLogin($username, $password){
 
     if ($result){
       $num = mysqli_num_rows($result);
+        dbClose($link);
         if ($num > 0){
             return true;
         }else{
@@ -106,5 +152,43 @@ function canLogin($username, $password){
         dbClose($link);
         $error = mysqli_error($link);
         echo $error;
+        return false;
+    }
+}
+
+/**
+ * 改变愿望的删除状态
+ * @param $id 愿望id
+ */
+
+function changeWishDelStatus($id){
+    $link = dbConnect();
+
+    $sql = "select delstatus from shangfox_wish where id = $id";
+
+    $result = mysqli_query($link, $sql);
+
+    if ($result){
+       $statu = mysqli_fetch_assoc($result);
+        $st = 0;
+        if ($statu['delstatus'] == 0){
+            $st = 1;
+        }
+        $upSql = "update shangfox_wish set delstatus = $st where id = $id";
+        
+        $upResult = mysqli_query($link, $upSql);
+        
+        dbClose($link);
+        if ($upResult){
+            return true;
+        }else{
+            return false;
+        }
+
+    }else{
+        $error = mysqli_error($link);
+        dbClose($link);
+        echo $error;
+        return false;
     }
 }

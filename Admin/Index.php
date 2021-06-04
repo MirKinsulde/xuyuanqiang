@@ -10,7 +10,7 @@ require '../Common/init.php';
 
 //判断用户是否登陆过
 if (empty($_SESSION['username'])){
-    require './Login/login.php';
+    require './Login/doLogin.php';
 }else{
     require './Main/admin.php';
 }

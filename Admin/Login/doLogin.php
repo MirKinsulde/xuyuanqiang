@@ -14,14 +14,14 @@ if (isset($_POST['username'])){
             isLogin();
         }else{
             $error = "用户名或密码错误!";
-            require "login.php";
+            require 'login.php';
         }
     }else{
         $error = "用户名或密码不能为空!";
-
-        
-        require "login.php";
+        require 'login.php';
     }
 }else{
-    isLogin();
+    require 'login.php';
 }
+
+
