@@ -2,7 +2,11 @@
 
 require_once __DIR__.'/../../Common/init.php';
 
-if (isset($_GET['type']) && $_GET['type'] == 'submit'){
+    if(empty($_SESSION['user'])){
+        $path = "/Home/Login/login.php";
+        $delay = 0;
+        include __DIR__."/../../Common/jump.php";
+    }else if (isset($_GET['type']) && $_GET['type'] == 'submit'){
         if (empty($_POST['fromname'])){
             $error = '称呼不能为空!';
             include "add.php";

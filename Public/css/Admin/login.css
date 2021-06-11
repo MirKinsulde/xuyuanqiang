@@ -28,3 +28,20 @@ th{width:150px; font-size: 14px;}
 div.login{background: rgba(255,255,255,0.5);width:600px;padding:50px 30px 30px;margin:0px auto;margin-top:10px;}
 .title{font-size:16px;height: 35px;}
 .left{width:280px;}
+
+table #register {
+    font-family:  "microsoft yahei";
+    font-style: normal;
+    display: inline-block;
+    background: dodgerblue;
+    height: 30px;
+    padding: 0px 30px;
+    line-height: 1.8em;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    margin: 10px 50px;
+    outline: none;
+    text-decoration: none;
+}

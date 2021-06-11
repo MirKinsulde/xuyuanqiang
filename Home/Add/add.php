@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="/Public/css/Home/index.css" />
 </head>
 <body>
+if(empty($_SESSION['user'])){
+    $path = "/Home/Login/login.php";
+    $delay = 0;
+    include __DIR__."/../../Common/jump.php";
+}
 <?php include "../Common/nav.php"; ?>
 <script type="text/javascript">
     $(function(){
