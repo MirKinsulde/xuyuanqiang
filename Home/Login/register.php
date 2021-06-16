@@ -68,8 +68,8 @@ require_once __DIR__.'/../../Common/init.php';
                 <th></th>
                 <td>
                     <div id="img"><img src="/Public/images/Home/header.jpg" width="100" height="100"  style='margin-bottom: 15px; margin-left: 80px' /></div>
-                    <button type="button" style=" margin-left: 90px; width: 80px; height: 30px; color: white; background: #d59392; position: relative;"> <input type="file" name="avatar" accept="image/*" onchange="tou()" id="tu" class="len250" style=" top: 0; left: 0; height: 30px; width: 60px; position: absolute; opacity: 0;"/>
-                        上传头像</button>
+                    <div type="button" style="text-align: center; line-height: 30px; text-shadow:none; margin-left: 90px; width: 80px; height: 30px; color: white; background: #d59392; position: relative;"> <input type="file" name="avatar" accept="image/jpeg, image/png, image/gif" onchange="tou()" id="tu" class="len250" style=" top: 0; left: 0; height: 30px; width: 80px; position: absolute; opacity: 0;"/>
+                        上传头像</div>
                 </td>
             </tr>
             <tr>
